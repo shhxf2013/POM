@@ -1,0 +1,307 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'popins', sans-serif;
+}
+/* ---------------- navbar styling -------------- */
+.header{
+    min-height: 10vh;
+    width: 100%;
+    /* background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)); */
+    background-size: cover;
+    background-position: center;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 7%;
+}
+
+.logo{
+    width: 200px;
+    cursor: pointer;
+}
+.nav-links li{
+    list-style: none;
+    display: inline-block;
+    margin: 10px 30px;
+}
+.nav-links li a{
+    text-decoration: none;
+    color: #000;
+}
+.active{
+    position: relative;
+}
+.active::after{
+    content: '';
+    background: #000;
+    width: 25px;
+    height: 2px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -12px;
+    border-radius: 2px;
+}
+.login-btn{
+    background: #ff5361;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 18px;
+}
+/* ---------------- home page styling ----------------- */
+.home-container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.container{
+    padding: 0 7%;
+}
+.header h1{
+    font-size: 4vw;
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+    padding-top: 22%;
+
+}
+.search-box{
+    background: #fff;
+    width: 40%;
+    margin: 30px auto;
+    padding: 6px 10px 6px 30px;
+    border-radius: 50px;
+}
+.search-box form{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.search-box form input{
+    display: block;
+    border: 1;
+    outline: none;
+    background: transparent;
+}
+/* ------------ city layout ----------------- */
+.sub-title{
+    margin: 50px 0 20px;
+    font-size: 2.2vw;
+    font-weight: 500;
+    color: #333;
+}
+.byCity{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-gap: 30px;
+}
+.byCity img{
+    width: 100%;
+    border-radius: 10px;
+}
+.byCity div{
+    position: relative;
+
+}
+.byCity div span{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    color: #fff;
+}
+/* ------ footer ------- */
+.footer{
+    margin: 80px 0 10px;
+    text-align: center;
+}
+.footer hr{
+    background: #999;
+    height: 1px;
+    width: 100%;
+    border: 0;
+    margin: 20px 0;
+}
+.footer p{
+    padding-bottom: 15px;
+}
+.menu-bar{
+    display: none;
+}
+/* ----------- for small screen ------------ */
+@media only screen and (max-width: 700px){
+    .logo{
+        position: fixed;
+        top: 4%;
+        left: 7%;
+    }
+    nav{
+        position: fixed;
+        top: 0;
+        z-index: 100;
+        display: inline-block;
+        width: 100%;
+        padding: 100px 7% 0;
+        background: #000;
+        text-align: right;
+        max-height: 100px;
+        overflow: hidden;
+        transition: max-height 0.5s;
+    }
+    nav .nav-links li{
+        margin: 10px 0;
+        display: block;
+    }
+    .login-btn{
+        margin: 15px 0 30px;
+    }
+    .menu-bar{
+        display: block;
+        position: fixed;
+        top: 4%;
+        right: 7%;
+        color: #000;
+        font-size: 28px;
+    }
+    .active::after{
+        left: -40px;
+        transform: translate(0, 50%);
+        bottom: 50%;
+    }
+    .hidemenu{
+        max-height: 300px;
+    }
+}
+/* -------------- cityPage ---------------- */
+.list-container{
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.left-col{
+    flex-basis: 70%;
+}
+.right-col{
+    flex-basis: 25%;
+}
+.left-col h1{
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+.places{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    border-top: 1px solid #ccc;
+}
+.places-img{
+    flex-basis: 40%;
+}
+.places-info{
+    flex-basis: 58%;
+    color: #555;
+}
+.places-img img{
+    width: 100%;
+    border-radius: 12px;
+}
+.places-info h3{
+    font-weight: 600;
+    color: #333;
+    font-size: 22px;
+    margin: 4px 0;
+}
+.places-info img{
+    width: 4%;
+    margin: 10px 1px;
+}
+.place-price{
+    text-align: right;
+}
+.place-price h4{
+    font-size: 20px;
+}
+.sidebar{
+    border: 1px solid #999;
+    padding: 20px 30px;
+    margin-top: 30px;
+}
+.sidebar h2{
+    font-size: 500;
+}
+.sidebar h3{
+    font-weight: 500;
+    margin: 20px 0 10px;
+}
+.filter{
+    display: flex;
+    align-items: center;
+    color: #555;
+    margin-bottom: 10px;
+}
+.filter p{
+    flex: 1;
+}
+.filter input{
+    margin-right: 15px;
+    cursor: pointer;
+}
+.pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+}
+.pagination img{
+    width: 15px;
+    margin: 10px 20px;
+}
+.right-arrow{
+    transform: rotate(180deg);
+}
+.pagination span{
+    margin: 10px 8px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.pagination .current{
+    background: #333;
+    color: #fff;
+}
+/* ------------ small screen for cityPage --------------- */
+@media only screen and (max-width: 700px){
+    .list-container{
+        margin-top: 150px;
+    }
+    .left-col, .right-col, .places-img, places-info{
+        flex-basis: 100%;
+    }
+    .left-col h1{
+        font-size: 22px;
+    }
+    .places-info h3{
+        font-size: 18px;
+    }
+    .pagination span{
+        margin: 10px 2px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+    }
+}
+/* ----------- detialPage --------------- */

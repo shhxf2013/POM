@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="home-container">
+    <div>
+        <h3>Browse by Continent</h3>
+        <hr>
+        <div>
+            <a href="{% url 'home' %}">All</a>
+        </div>
+
+        {% for continente in continentes %}
+            <div>
+                <a href="{% url 'home' %}?q={{continente.name}}">{{continente.name}}</a>
+            </div>
+
+        {% endfor %}
+    </div>
+    <div  class="container">
+        <h2 class="sub-title">City Name</h2>
+        <a href="{% url 'add-city' %}">Add City</a>
+        <div  class="byCity">
+            {% for city in cities %}
+                <div>
+                    <a href="{% url 'update-city' city.id %}">Edit</a>
+                    <a href="{% url 'delete-city' city.id %}">Delete</a>
+                    <img src="{% static 'images/4.jpg' %}">
+                    <span>
+                        <h3>{{city.id}} -- <a href="{% url 'city' city.id %}">{{city.name}}</a></h3>
+                        <p>{{city.continente.name}}</p>
+                    </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</div>
+
+{% endblock %}

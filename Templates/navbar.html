@@ -1,0 +1,26 @@
+{% load static %}
+<div class="header">
+    <nav id="navBar">
+        <a href="/">
+            <img src="{% static 'images/logoSS.png' %}" class="logo">
+        </a>
+        <div class="search-box">
+            <form method="GET" action="{% url 'home' %}">
+                <input type="text" name="q" placeholder="Search a place">
+            </form>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Attractions</a></li>
+            <li><a href="#">Eatery</a></li>
+            <li><a href="#">Lodgement</a></li>
+        </ul>
+        {% if request.user.is_authenticated %}
+        <p>Hello {{request.user}}</p>
+        <a href="{% url 'logout' %}" class="login-btn">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}" class="login-btn">Login/Register</a>
+        <img src="{% static 'images/menu.jpg' %}" class="menu-bar" onclick="togglebtn()">
+        {% endif %}
+    </nav>
+
+</div>
