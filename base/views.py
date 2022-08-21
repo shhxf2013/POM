@@ -8,7 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.db.models import Q
 from django.http import HttpResponse
 # from datetime import datetime
-from .models import City, Continente, Place
+from .models import City, Continente, Place, Photo
 from .forms import CityForm
 
 def loginPage(request):
@@ -72,12 +72,10 @@ def home(request):
 
 def city(request, pk):
     city = City.objects.get(id=pk)
-    # city_locOfInts = city.locOfInt_set.all()
-    # tags = city.tags.all()
-   
+    city_places = city.place_set.all()  
     context = {
         'city':city,
-        # 'city_locOfInts': city_locOfInts,
+        'places': city_places,
         # 'tags': tags
     }
     return render(request, 'base/cityPage.html', context)
@@ -114,6 +112,11 @@ def deleteCity(request, pk):
         return redirect('home')
     return render(request, 'base/delete.html', {'obj':city})
 
+def place(request,pk):
+    place = Place.objects.get(id=pk)
+    context = {'place': place}
+    return render(request, 'base/placePage.html')
+
 @login_required(login_url='login')
 def deletePlace(request,pk):
     place = Place.objects.get(id=pk)
@@ -125,6 +128,3 @@ def deletePlace(request,pk):
         return redirect('home')
     return render(request, 'base/delete.html', {'obj':place})
 
-def detail(request):
-    
-    return render(request, 'base/detailPage.html')

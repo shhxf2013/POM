@@ -9,115 +9,17 @@
                 <div class="places-img">
                     <img src="{% static 'images/3.jpg' %}">
                 </div>
-                <div class="places-info">
-                    <p>places</p> 
-                    <h3>Tag</h3>
-                    <p>comments</p>
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <!-- <img src="{% static 'images/silverstarEmpty.png' %}"> -->
-                    <div class="place-price">
-                        <p>ratings</p>
-                        <h4>Price</h4>
+                {% for place in places %}
+                    <div class="places-info">
+                        <p><a href="{% url 'place' place.id %}">{{place.name}}</a></p>
+                        <h3>{{place.tag}}</h3>
+                        <p>{{place.comment}}</p>
+                        <div class="place-price">
+                            <p>{{place.rating}}</p>
+                            <h4>{{place.price}}</h4>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="places">
-                <div class="places-img">
-                    <img src="{% static 'images/3.jpg' %}">
-                </div>
-                <div class="places-info">
-                    <p>Colosseum</p>
-                    <h3>Attraction</h3>
-                    <p>Visited in August 2022.</p>
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <!-- <img src="{% static 'images/silverstarEmpty.png' %}"> -->
-                    <div class="place-price">
-                        <p>Entrance + audioguide</p>
-                        <h4>€ 100 </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="places">
-                <div class="places-img">
-                    <img src="{% static 'images/3.jpg' %}">
-                </div>
-                <div class="places-info">
-                    <p>Colosseum</p>
-                    <h3>Attraction</h3>
-                    <p>Visited in August 2022.</p>
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <!-- <img src="{% static 'images/silverstarEmpty.png' %}"> -->
-                    <div class="place-price">
-                        <p>Entrance + audioguide</p>
-                        <h4>€ 100 </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="places">
-                <div class="places-img">
-                    <img src="{% static 'images/3.jpg' %}">
-                </div>
-                <div class="places-info">
-                    <p>Colosseum</p>
-                    <h3>Attraction</h3>
-                    <p>Visited in August 2022.</p>
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <!-- <img src="{% static 'images/silverstarEmpty.png' %}"> -->
-                    <div class="place-price">
-                        <p>Entrance + audioguide</p>
-                        <h4>€ 100 </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="places">
-                <div class="places-img">
-                    <img src="{% static 'images/3.jpg' %}">
-                </div>
-                <div class="places-info">
-                    <p>Colosseum</p>
-                    <h3>Attraction</h3>
-                    <p>Visited in August 2022.</p>
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <!-- <img src="{% static 'images/silverstarEmpty.png' %}"> -->
-                    <div class="place-price">
-                        <p>Entrance + audioguide</p>
-                        <h4>€ 100 </h4>
-                    </div>
-                </div>
-            </div>
-            <div class="places">
-                <div class="places-img">
-                    <img src="{% static 'images/3.jpg' %}">
-                </div>
-                <div class="places-info">
-                    <p>Colosseum</p>
-                    <h3>Attraction</h3>
-                    <p>Visited in August 2022.</p>
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <img src="{% static 'images/silverstar.jpg' %}">
-                    <!-- <img src="{% static 'images/silverstarEmpty.png' %}"> -->
-                    <div class="place-price">
-                        <p>Entrance + audioguide</p>
-                        <h4>€ 100 </h4>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
         <div class="right-col">

@@ -304,4 +304,13 @@ nav{
         font-size: 12px;
     }
 }
-/* ----------- detialPage --------------- */
+/* ----------- placePage --------------- */
+.place-details{
+    padding: 0 12%;
+}
+.place-title{
+    margin-top: 50px;
+}
+.place-title h1{
+    font-weight: 600;
+}

@@ -51,3 +51,10 @@ class Place(models.Model):
     def __str__(self):
         return self.name
 
+class Photo(models.Model):
+    name = models.CharField(max_length=100, null=False, blank=False)
+    image = models.ImageField(null=False, blank=False)
+    place = models.ForeignKey(Place, on_delete=models.SET_NULL, null=True)
+    
+    def __str__(self):
+        return self.name

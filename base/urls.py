@@ -11,5 +11,6 @@ urlpatterns = [
     path('add-city/', views.addCity, name='add-city'),
     path('update-city/<str:pk>/', views.updateCity, name='update-city'),
     path('delete-city/<str:pk>/', views.deleteCity, name='delete-city'),
+    path('place/<str:pk>/', views.place, name="place"),
 
 ]
