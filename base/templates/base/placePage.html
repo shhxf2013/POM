@@ -2,11 +2,22 @@
 {% load static %}
 {% block content %}
 
-<div class="place-details">
-    <div class="place-title">
-        <h1>{{place.id}}</h1>
+<div>
+    <div>
+        <h1>{{place.name}}</h1>
+        <p>{{place.city.name}}, {{place.city.country}}</p>
     </div>
-
+    {% for photo in photos %}
+        <div style="height:90vh;">
+            <img src="{{photo.image.url}}">
+        </div>
+        {% empty %}
+        <h3>No Photos ...</h3>
+    {% endfor %}
+    <div>
+        <h3>Brief Description</h3>
+        <p>{{place.comment}}</p>
+    </div>
 </div>
 <div class="map">
     <h3>Location on map</h3>

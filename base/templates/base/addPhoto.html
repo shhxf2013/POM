@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div>
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label>Name</label>
+            <input required name="name" type="text">
+        </div>
+
+        <div>
+            <label>Select A Place</label>
+            <select name="place">
+                {% for place in places %}
+                    <option value="{{place.id}}">{{place.name}}.</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div>
+            <label>Upload images</label>
+            <input required name="image" type="file">
+        </div>
+        <button type="submit">Upload</button>
+    </form>
+
+    
+</div>
+
+{% endblock %}

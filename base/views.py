@@ -114,8 +114,9 @@ def deleteCity(request, pk):
 
 def place(request,pk):
     place = Place.objects.get(id=pk)
-    context = {'place': place}
-    return render(request, 'base/placePage.html')
+    photos = place.photo_set.all()
+    context = {'place': place, 'photos': photos}
+    return render(request, 'base/placePage.html', context)
 
 @login_required(login_url='login')
 def addPlace(request):
@@ -155,5 +156,21 @@ def deletePlace(request,pk):
 
 @login_required(login_url='login')
 def addPhoto(request):
-    context = {}
-    return render(request, '', context)
+    places = Place.objects.all()
+    if request.method == 'POST':
+        data = request.POST
+        image = request.FILES.get('image')
+        photo = Photo.objects.create(
+            place = Place.objects.get(id=data['place']),
+            name = data['name'],
+            image=image,
+        )
+        return redirect('home')
+
+    context = {'places': places}
+    return render(request, 'base/addPhoto.html', context)
+
+def viewPhoto(request, pk):
+    photo = Photo.objects.get(id=pk)
+    context = {'photo': photo}
+    return render(request, 'base/photo.html', context)
