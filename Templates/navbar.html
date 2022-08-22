@@ -10,9 +10,9 @@
             </form>
         </div>
         <ul class="nav-links">
-            <li><a href="#" class="active">Attractions</a></li>
-            <li><a href="#">Eatery</a></li>
-            <li><a href="#">Lodgement</a></li>
+            <li><a href="{% url 'add-city' %}">Add A City</a></li>
+            <li><a href="{% url 'add-place' %}">Add A Place</a></li>
+            <li><a href="#">Add A Photo</a></li>
         </ul>
         {% if request.user.is_authenticated %}
         <p>Hello {{request.user}}</p>

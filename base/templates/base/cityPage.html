@@ -6,10 +6,10 @@
         <div class="left-col">
             <h1>{{city.name}}</h1>
             <div class="places">
-                <div class="places-img">
-                    <img src="{% static 'images/3.jpg' %}">
-                </div>
                 {% for place in places %}
+                    <div class="places-img">
+                        <img src="{% static 'images/3.jpg' %}">
+                    </div>
                     <div class="places-info">
                         <p><a href="{% url 'place' place.id %}">{{place.name}}</a></p>
                         <h3>{{place.tag}}</h3>
@@ -18,6 +18,9 @@
                             <p>{{place.rating}}</p>
                             <h4>{{place.price}}</h4>
                         </div>
+                        <a href="{% url 'update-place' place.id %}">Edit</a>
+                        <a href="{% url 'delete-place' place.id %}">Delete</a>
+    
                     </div>
                 {% endfor %}
             </div>
@@ -26,32 +29,17 @@
             <div class="sidebar">
                 <h2>Select Filters</h2>
                 <h3>Type</h3>
-                <div class="filter">
-                    <input type="checkbox"> <p>Attraction</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Eatery</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>Lodgment</p> <span>(0)</span>
-                </div>
+                {% for place in places %}
+                    <div class="filter">
+                        <input type="checkbox"> <p>{{place.tag}}</p> <span>(0)</span>
+                    </div>
+                {% endfor %}
                 <h3>Rating</h3>
-                <div class="filter">
-                    <input type="checkbox"> <p>five stars</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>four stars</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>three stars</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>two stars</p> <span>(0)</span>
-                </div>
-                <div class="filter">
-                    <input type="checkbox"> <p>one star</p> <span>(0)</span>
-                </div>
-                
+                {% for place in places %}
+                    <div class="filter">
+                        <input type="checkbox"> <p>{{place.rating}}</p> <span>(0)</span>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>

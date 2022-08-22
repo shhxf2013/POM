@@ -9,7 +9,7 @@ from django.db.models import Q
 from django.http import HttpResponse
 # from datetime import datetime
 from .models import City, Continente, Place, Photo
-from .forms import CityForm
+from .forms import CityForm, PlaceForm
 
 def loginPage(request):
     page = 'login'
@@ -72,11 +72,10 @@ def home(request):
 
 def city(request, pk):
     city = City.objects.get(id=pk)
-    city_places = city.place_set.all()  
+    city_places = city.place_set.all().order_by('-created')
     context = {
         'city':city,
         'places': city_places,
-        # 'tags': tags
     }
     return render(request, 'base/cityPage.html', context)
 
@@ -86,7 +85,8 @@ def addCity(request):
     if request.method == 'POST':
         form = CityForm(request.POST)
         if form.is_valid():
-            form.save()
+            city = form.save(commit=False)
+            city.user = request.user
             return redirect('home')
     context = {'form': form}
     return render(request, 'base/city_form.html', context)
@@ -118,6 +118,31 @@ def place(request,pk):
     return render(request, 'base/placePage.html')
 
 @login_required(login_url='login')
+def addPlace(request):
+    form = PlaceForm()
+    if request.method == 'POST':
+        form = PlaceForm(request.POST)
+        if form.is_valid():
+            place = form.save(commit=False)
+            place.user = request.user
+            return redirect('home')
+    context = {'form': form}
+    return render(request, 'base/place_form.html', context)
+
+@login_required(login_url='login')
+def updatePlace(request, pk):
+    place = Place.objects.get(id=pk)
+    form = PlaceForm(instance=place)
+    if request.method == 'POST':
+        form = PlaceForm(request.POST, instance=place)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form': form}
+    return render(request, 'base/place_form.html', context)
+
+@login_required(login_url='login')
 def deletePlace(request,pk):
     place = Place.objects.get(id=pk)
     if request.user != place.user:
@@ -128,3 +153,7 @@ def deletePlace(request,pk):
         return redirect('home')
     return render(request, 'base/delete.html', {'obj':place})
 
+@login_required(login_url='login')
+def addPhoto(request):
+    context = {}
+    return render(request, '', context)

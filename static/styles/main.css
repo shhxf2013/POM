@@ -23,6 +23,24 @@ nav{
     width: 200px;
     cursor: pointer;
 }
+.search-box{
+    background: #fff;
+    width: 40%;
+    margin: 30px auto;
+    padding: 6px 10px 6px 30px;
+    border-radius: 50px;
+}
+.search-box form{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.search-box form input{
+    display: block;
+    border: 1;
+    outline: none;
+    background: transparent;
+}
 .nav-links li{
     list-style: none;
     display: inline-block;
@@ -71,25 +89,6 @@ nav{
     padding-top: 22%;
 
 }
-.search-box{
-    background: #fff;
-    width: 40%;
-    margin: 30px auto;
-    padding: 6px 10px 6px 30px;
-    border-radius: 50px;
-}
-.search-box form{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.search-box form input{
-    display: block;
-    border: 1;
-    outline: none;
-    background: transparent;
-}
-/* ------------ city layout ----------------- */
 .sub-title{
     margin: 50px 0 20px;
     font-size: 2.2vw;
@@ -102,7 +101,7 @@ nav{
     grid-gap: 30px;
 }
 .byCity img{
-    width: 100%;
+    width: 200px;
     border-radius: 10px;
 }
 .byCity div{
@@ -111,11 +110,8 @@ nav{
 }
 .byCity div span{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
     text-align: center;
-    color: #fff;
+    color: #000;
 }
 /* ------ footer ------- */
 .footer{
@@ -313,4 +309,11 @@ nav{
 }
 .place-title h1{
     font-weight: 600;
+}
+.map{
+    margin: 50px 0;
+}
+.map iframe{
+    width: 100%;
+    margin-bottom: 30px;
 }
