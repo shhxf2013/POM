@@ -2,27 +2,29 @@
 {% load static %}
 {% block content %}
 
-<div>
+<div class="container">
     <div>
         <h1>{{place.name}}</h1>
-        <p>{{place.city.name}}, {{place.city.country}}</p>
+        <p><a href="">{{place.city.name}}</a>, {{place.city.country}}</p>
     </div>
-    {% for photo in photos %}
-        <div style="height:90vh;">
-            <img src="{{photo.image.url}}">
+    <div>
+        {% for photo in photos %}
+        <div  class="mh-100" style="width: 250px; height: 200px;">
+            <img src="{{photo.image.url}}" class="img-fluid">
         </div>
         {% empty %}
         <h3>No Photos ...</h3>
-    {% endfor %}
+        {% endfor %}
+    </div>
     <div>
         <h3>Brief Description</h3>
         <p>{{place.comment}}</p>
     </div>
-</div>
-<div class="map">
-    <h3>Location on map</h3>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.122888131338!2d12.490042215699862!3d41.890214172634444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f61b6532013ad%3A0x28f1c82e908503c4!2sColosseum!5e0!3m2!1sen!2sca!4v1661099865234!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    
+    <div class="map">
+        <h3>Location on map</h3>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2970.122888131338!2d12.490042215699862!3d41.890214172634444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f61b6532013ad%3A0x28f1c82e908503c4!2sColosseum!5e0!3m2!1sen!2sca!4v1661099865234!5m2!1sen!2sca" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        
+    </div>    
 </div>
 
 {% endblock %}

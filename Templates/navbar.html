@@ -1,26 +1,37 @@
 {% load static %}
-<div class="header">
-    <nav id="navBar">
-        <a href="/">
-            <img src="{% static 'images/logoSS.png' %}" class="logo">
-        </a>
-        <div class="search-box">
-            <form method="GET" action="{% url 'home' %}">
-                <input type="text" name="q" placeholder="Search a place">
-            </form>
+<div>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+            <div class=""w-5 p-3">
+                <a href="/">
+                    <img src="{% static 'images/logoSS.png' %}" class="img-fluid">
+                </a>
+            </div>
+            <div class="">
+                <form method="GET" class="d-flex" role="search" action="{% url 'home' %}">
+                    <input class="form-control me-2" type="text" name="q" placeholder="Search a place">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item btn btn-outline-secondary"><a href="{% url 'add-city' %}">Add A City</a></li>
+                    <li class="nav-item btn btn-outline-secondary"><a href="{% url 'add-place' %}">Add A Place</a></li>
+                    <li class="nav-item btn btn-outline-secondary"><a href="{% url 'add-photo' %}">Upload Photos</a></li>
+                </ul>
+                <div class="px-5">
+                    {% if request.user.is_authenticated %}
+                    <p>{{request.user}}</p>
+                    <a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+                    {% else %}
+                    <a href="{% url 'login' %}" class="btn btn-primary">Login/Register</a>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-        <ul class="nav-links">
-            <li><a href="{% url 'add-city' %}">Add A City</a></li>
-            <li><a href="{% url 'add-place' %}">Add A Place</a></li>
-            <li><a href="{% url 'add-photo' %}">Upload Photos</a></li>
-        </ul>
-        {% if request.user.is_authenticated %}
-        <p>Hello {{request.user}}</p>
-        <a href="{% url 'logout' %}" class="login-btn">Logout</a>
-        {% else %}
-        <a href="{% url 'login' %}" class="login-btn">Login/Register</a>
-        <img src="{% static 'images/menu.jpg' %}" class="menu-bar" onclick="togglebtn()">
-        {% endif %}
     </nav>
 
 </div>
