@@ -1,0 +1,17 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/map.css' %}" />
+    <link rel="stylesheet" type="text/css" href="//unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="//unpkg.com/leaflet/dist/leaflet.js"></script>
+    <title>My Map</title>
+</head>
+<body>
+    {{ markers|json_script:"markers-data" }}
+    <div id="map"></div>
+    <script src="{% static 'map.js' %}"></script>
+</body>
+</html>
